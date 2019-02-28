@@ -32,7 +32,6 @@ public class Converter implements Conversion{
 	}
 	public String decToHex(String num){
 			int rem;
-		//	String hexNumber = "";
 			int number2 = Integer.parseInt(num);
 			     String str2="";
 			     char hex[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
@@ -41,9 +40,27 @@ public class Converter implements Conversion{
 			       str2=hex[rem]+str2;
 			       number2=number2/16;
     	 		}
-    	 	//	hexNumber = ""+number2;
     	 		return str2;
 		}
 
+	public String hexToDec(String num){
+		String hex = ("0123456789ABCDEF");
+		num = num.toUpperCase();
+		int sum = 0;
+		for(int x = 0;x<num.length();x++){
+				int i = hex.indexOf(num.charAt(x));
+				sum = (sum*16)+i;
+		}
+		String Dec = ""+sum;
+		return Dec;
+	}
+	public String binToHex(String num){
+		String bin = binToDec(num);
+		return decToHex(bin);
+	}
+	public String hexToBin(String num){
+		String hex = hexToDec(num);
+		return decToBin(hex);
+	}
 
 }
